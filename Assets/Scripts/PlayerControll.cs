@@ -20,13 +20,21 @@ public class PlayerControll : MonoBehaviour {
 			this.transform.position = GameObject.Find ("LeftPlayer").transform.position;
 			status = -1f;
 			CharacterTrigger = false;
-		} else {
+		}
+        else if(Days.instance.spawnDirection.Equals("Right")) {
 			camera.transform.position = GameObject.Find ("RightCamera").transform.position;
 			this.transform.position = GameObject.Find ("RightPlayer").transform.position;
 			CharacterTrigger = false;
 			status = 1f;
 		}
-	}
+        else 
+        {
+            camera.transform.position = GameObject.Find(Days.instance.spawnDirection+"_camera").transform.position;
+            this.transform.position = GameObject.Find(Days.instance.spawnDirection+"_player").transform.position;
+            CharacterTrigger = false;
+            status = 0f;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
