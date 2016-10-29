@@ -7,6 +7,7 @@ public class killAni : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         StartCoroutine(ani());
+
 	}
     IEnumerator ani()
     {
@@ -15,7 +16,10 @@ public class killAni : MonoBehaviour {
                 yield return new WaitForSeconds(0.7f);
             
         }
+        Application.LoadLevel("naraition");
     }
+
+
     // Update is called once per frame
     void Update () {
 	    
