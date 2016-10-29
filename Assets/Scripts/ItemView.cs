@@ -13,10 +13,14 @@ public class ItemView : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetMouseButtonUp(0))
         {
-            detail.gameObject.SetActive(!detail.gameObject.active);
-            detail.gameObject.GetComponent<ItemDetail>().SetData("뷁",sp.GetComponent<Image>().sprite);
+            RaycastHit hitInfo = new RaycastHit();
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo)){
+                detail.gameObject.SetActive(!detail.gameObject.active);
+                detail.gameObject.GetComponent<ItemDetail>().SetData("뷁", sp.GetComponent<Image>().sprite);
+            }
         }
     }
 }
