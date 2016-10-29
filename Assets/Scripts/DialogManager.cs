@@ -8,7 +8,7 @@ public class DialogManager : MonoBehaviour {
 
 	IEnumerator textReading(string text){
 		string stringStack = "";
-		for (int i = 0; i < text.Length; i++) {
+		for (int i = 0; i < text.Length+1; i++) {
 			stringStack = text.Substring (0, i);
 			Dialog.text = stringStack;
 			yield return new WaitForSeconds (0.1f);
