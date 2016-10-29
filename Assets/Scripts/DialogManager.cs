@@ -8,7 +8,6 @@ public class DialogManager : MonoBehaviour {
     public AudioClip typing;    //사운드 파일을 가진다
     public static DialogManager instance;//사운드매니저의 위치를 담는다
 	public bool nowTyping = false;
-	public TextAsset comment;
 	private int i = 0;
 	public string[] texts = new string[100];
 	public bool isBreaking = false;
@@ -38,7 +37,10 @@ public class DialogManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         audio = GetComponent<AudioSource>();// 오디오 컴퍼넌스를 담는다.
-		texts = comment.text.Split('\n');
+	}
+
+	public void SetText(TextAsset asset){
+		texts = asset.text.Split('\n');
 		StartCoroutine (textReading (texts [i++]));
 	}
 	
