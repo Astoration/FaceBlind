@@ -9,7 +9,7 @@ public class InventoryManager : MonoBehaviour {
 	public GameObject itemBox;
    
 	private const float itemBoxMargin = -10f;
-	private const float itemBoxHeight = -180f;
+	private const float itemBoxHeight = -90f;
 	// Use this for initialization
 	void Start () {
         this.gameObject.SetActive(false);
