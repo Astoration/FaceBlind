@@ -3,13 +3,15 @@ using System.Collections;
 
 public class Potal : MonoBehaviour {
     public string scene;
+	public string direction;
 	// Use this for initialization
 	void Start () {
 	
 	}
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerStay2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.DownArrow)) {
+			Days.instance.spawnDirection = direction;
             Application.LoadLevel(scene);
         }
     }

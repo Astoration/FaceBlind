@@ -16,7 +16,7 @@ public class ItemObject : MonoBehaviour {
 	}
 
 	void Getitem(){
-		Inventory.itemList.Add (items);
+		Inventory.instance.itemList.Add (items);
 	}
 
 	void OnConllisionStay2D(Collider2D other){

@@ -8,14 +8,24 @@ public class PlayerControll : MonoBehaviour {
 	private SpriteRenderer sprite;
 	private Animator animationControl;
 	public GameObject camera;
-	public GameObject MapTrigger;
 	public float status = 0f;
-	public bool CharacterTrigger = true;
+	public bool CharacterTrigger = false;
 	// Use this for initialization
 	void Start () {
 		rigid = GetComponent<Rigidbody2D> ();
 		sprite = GetComponent<SpriteRenderer> ();
 		animationControl = GetComponent<Animator> ();
+		if (Days.instance.spawnDirection.Equals ("Left")) {
+			camera.transform.position = GameObject.Find ("LeftCamera").transform.position;
+			this.transform.position = GameObject.Find ("LeftPlayer").transform.position;
+			status = -1f;
+			CharacterTrigger = false;
+		} else {
+			camera.transform.position = GameObject.Find ("RightCamera").transform.position;
+			this.transform.position = GameObject.Find ("RightPlayer").transform.position;
+			CharacterTrigger = false;
+			status = 1f;
+		}
 	}
 	
 	// Update is called once per frame
