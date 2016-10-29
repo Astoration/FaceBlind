@@ -12,7 +12,7 @@ public class DialogManager : MonoBehaviour {
 	public string[] texts = new string[100];
 	public bool isBreaking = false;
     AudioSource audio;
-    IEnumerator textReading(string text){
+	IEnumerator textReading(string text,bool option){
 		nowTyping = true;
 		string stringStack = "";
 		isBreaking = false;
@@ -26,6 +26,10 @@ public class DialogManager : MonoBehaviour {
 		}
 		isBreaking = false;
 		nowTyping = false;
+		if (option) {
+			Days.instance.date += 1;
+			Application.LoadLevel ("HouseScene");
+		}
 	}
     void Awake()
     {
@@ -41,13 +45,16 @@ public class DialogManager : MonoBehaviour {
 
 	public void SetText(TextAsset asset){
 		texts = asset.text.Split('\n');
-		StartCoroutine (textReading (texts [i++]));
+		 StartCoroutine (textReading (texts [i++],false));
 	}
-	
+
+	public void CallBackText(string message){
+		StartCoroutine(textReading(message,true));
+	}
 	// Update is called once per frame
 	void Update () {
 		if (!nowTyping && Input.GetKeyDown (KeyCode.Return) && i < texts.Length)
-			StartCoroutine (textReading (texts [i++]));
+			StartCoroutine (textReading (texts [i++],false));
 		else if (Input.GetKeyDown (KeyCode.Return))
 			isBreaking = true;
 	}

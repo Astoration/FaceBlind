@@ -19,7 +19,15 @@ public class Days : MonoBehaviour {
 			Destroy (this.gameObject);
 		}
 	}
-	
+
+	public void addTime(){
+		if (Days.instance.isNight) {
+			Days.instance.isNight = false;
+			DialogManager.instance.CallBackText ("날이 늦었다 오늘은 그만 돌아가자.");
+		} else {
+			Days.instance.isNight = true;
+		}
+	}
 	// Update is called once per frame
 	void Update () {
 	
