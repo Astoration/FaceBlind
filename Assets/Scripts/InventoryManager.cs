@@ -7,11 +7,13 @@ public class InventoryManager : MonoBehaviour {
 	public List<Item> itemList;
 	public GameObject ContentBox;
 	public GameObject itemBox;
+   
 	private const float itemBoxMargin = -10f;
 	private const float itemBoxHeight = -180f;
 	// Use this for initialization
 	void Start () {
-		int itemCount = 15;
+        this.gameObject.SetActive(false);
+        int itemCount = 15;
 		ContentBox.GetComponent<RectTransform>().sizeDelta = new Vector2(0,Mathf.Abs(itemBoxMargin*2 + itemBoxHeight * itemCount));
 		for (int i = 0; i < itemCount; i++) {
 			Image box = Instantiate (itemBox).GetComponent<Image>();
@@ -23,6 +25,6 @@ public class InventoryManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+
+    }
 }
