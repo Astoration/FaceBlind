@@ -39,7 +39,7 @@ public class DialogManager : MonoBehaviour {
         audio = GetComponent<AudioSource>();// 오디오 컴퍼넌스를 담는다.
 	}
 
-	void SetText(TextAsset asset){
+	public void SetText(TextAsset asset){
 		texts = asset.text.Split('\n');
 		StartCoroutine (textReading (texts [i++]));
 	}
