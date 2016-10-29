@@ -4,7 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class ItemObject : MonoBehaviour {
-	public Item items;
+	public Item items = new Item();
 	// Use this for initialization
 	void Start () {
 	

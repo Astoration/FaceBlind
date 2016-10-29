@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class Item {
-	string itemName;
-	string itemPlace;
-	string itemDetail;
-	Sprite itemImage;
+	public string itemName;
+	public string itemPlace;
+	public string itemDetail;
+	public Sprite itemImage;
 }
