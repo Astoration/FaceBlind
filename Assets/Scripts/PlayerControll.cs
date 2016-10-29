@@ -21,7 +21,7 @@ public class PlayerControll : MonoBehaviour {
 		float deltaX = Input.GetAxis ("Horizontal");
 		float deltaY = Input.GetAxis ("Vertical");
 		transform.Translate (Vector2.right* deltaX * speed * Time.deltaTime);
-		if (deltaX < 0) {
+        if (deltaX < 0) {
 			sprite.flipX = true;
 		} else if (deltaX > 0) {
 			sprite.flipX = false;
