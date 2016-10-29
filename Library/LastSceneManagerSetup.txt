@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Map/MapOne.unity
+- path: Assets/Scenes/sinob/naraition.unity
   isLoaded: 1
   isActive: 1
