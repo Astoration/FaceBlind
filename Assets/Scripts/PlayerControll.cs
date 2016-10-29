@@ -7,6 +7,10 @@ public class PlayerControll : MonoBehaviour {
 	private Rigidbody2D rigid;
 	private SpriteRenderer sprite;
 	private Animator animationControl;
+	public GameObject camera;
+	public GameObject MapTrigger;
+	public float status = 0f;
+	public bool CharacterTrigger = true;
 	// Use this for initialization
 	void Start () {
 		rigid = GetComponent<Rigidbody2D> ();
@@ -24,8 +28,14 @@ public class PlayerControll : MonoBehaviour {
 		transform.Translate (Vector2.right* deltaX * speed * Time.deltaTime);
         if (deltaX < 0) {
 			sprite.flipX = true;
+			if(status != -1f && CharacterTrigger){
+				camera.transform.Translate (Vector2.right* deltaX * speed * Time.deltaTime);
+			}
 		} else if (deltaX > 0) {
 			sprite.flipX = false;
+			if(status != 1f && CharacterTrigger){
+				camera.transform.Translate (Vector2.right* deltaX * speed * Time.deltaTime);
+			}
 		}
 		if (deltaX == 0) {
 			animationControl.SetBool ("isMovement", false);
@@ -35,5 +45,15 @@ public class PlayerControll : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Space)&&Mathf.Abs(rigid.velocity.y)<0.4) {
 			rigid.AddForce (Vector2.up * jumpPower);
 		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.CompareTag ("characterTrigger"))
+			CharacterTrigger = true;
+	}
+	void OnTriggerExit2D(Collider2D other)
+	{
+		if(other.CompareTag("characterTrigger"))
+			CharacterTrigger = false;
 	}
 }
